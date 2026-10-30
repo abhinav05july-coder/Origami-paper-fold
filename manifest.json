@@ -1,0 +1,13 @@
+{
+  "background_color": "#cd8135",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Origami paper art",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "Origami-arts",
+  "start_url": "/",
+  "theme_color": "#20d2ba",
+  "id": "Origami paper art",
+  "description": "Origami Paper Art Designs and Step-by-Step Crafts"
+}

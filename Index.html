@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origami Paper Art Designs - Step-by-Step Crafts Studio</title>
+    
+    <!-- Updated Google Search Console Verification -->
+    <meta name="google-site-verification" content="tHv2fWdcwt0PtxER0gXejlRCUmO_Msmuzx5p5tOSyeE" />
+
+    <!-- PWA Manifest Link -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js')
+            .then(() => console.log('Service Worker Registered Successfully'))
+            .catch(err => console.log('Service Worker Registration Failed:', err));
+        });
+      }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#FBF9F1',
+                        'paper-dark': '#EFECE6',
+                        craft: '#D4A373',
+                        'craft-dark': '#FAEDCD',
+                        terracotta: '#E88D72',
+                        sage: '#81B29A',
+                        slate: '#2C261E',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        hand: ['Caveat', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F7F3E9;
+            color: #2C261E;
+            background-image: radial-gradient(#D4A373 0.5px, transparent 0.5px), radial-gradient(#D4A373 0.5px, #F7F3E9 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+        .origami-shadow {
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08), -3px -3px 10px rgba(255, 255, 255, 0.8);
+        }
+        .origami-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .origami-card:hover {
+            transform: translateY(-5px) rotate(0.5deg);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #EFECE6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4A373;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased">
+
+    <!-- Header Navigation Bar -->
+    <header class="bg-paper/95 backdrop-blur-md border-b border-craft/30 sticky top-0 z-40 px-4 lg:px-8 py-3">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
+                <div class="w-10 h-10 bg-terracotta text-white rounded-lg flex items-center justify-center text-xl shadow-md transform -rotate-6">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-slate">Origami Paper Art Designs</h1>
+                    <p class="text-xs text-craft font-medium -mt-1">Craft Studio & Step-by-Step Guides</p>
+                </div>
+            </div>
+
+            <nav class="flex items-center gap-1 md:gap-2 bg-paper-dark p-1 rounded-full border border-craft/30 text-xs font-semibold">
+                <button onclick="switchTab('home')" id="nav-home" class="nav-tab px-4 py-2 rounded-full transition bg-terracotta text-white shadow-sm">
+                    <i class="fa-solid fa-house mr-1.5"></i> Home
+                </button>
+                <button onclick="switchTab('gallery')" id="nav-gallery" class="nav-tab px-4 py-2 rounded-full transition text-slate hover:bg-craft-dark">
+                    <i class="fa-solid fa-shapes mr-1.5"></i> All Arts (<span id="menuArtCount">0</span>)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- PAGE 1: HOME PAGE -->
+    <div id="page-home" class="flex-grow max-w-7xl w-full mx-auto px-4 lg:px-8 py-8 space-y-12">
+        <section class="bg-gradient-to-r from-terracotta via-craft to-sage text-white rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div class="space-y-4 max-w-2xl text-center lg:text-left z-10">
+                <span class="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Welcome to Paper Crafting</span>
+                <h1 class="text-4xl lg:text-5xl font-extrabold font-hand tracking-wide leading-tight">
+                    Origami Paper Art Designs
+                </h1>
+                <p class="text-white/90 text-sm lg:text-base leading-relaxed">
+                    Step-by-step masterclasses for crafting paper lanterns, decorative lamps, dynamic action toys, paper cranes, modular stars, and functional boxes.
+                </p>
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                    <button onclick="switchTab('gallery')" class="px-6 py-3 bg-slate text-white text-xs font-bold rounded-xl shadow-lg hover:bg-slate/90 transition flex items-center gap-2">
+                        <i class="fa-solid fa-border-all"></i> Explore All Arts
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate">Featured Origami Art Projects</h2>
+                    <p class="text-xs text-gray-500">Popular creations with complete step-by-step instructions</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="homeFeaturedGrid"></div>
+        </section>
+    </div>
+
+    <!-- PAGE 2: ALL ARTS GALLERY PAGE -->
+    <div id="page-gallery" class="hidden flex-grow max-w-7xl w-full mx-auto px-4 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <aside class="space-y-6">
+            <div class="bg-paper rounded-2xl p-5 border border-craft/30 origami-shadow">
+                <h2 class="text-sm font-bold mb-3 text-slate flex items-center gap-2">
+                    <i class="fa-solid fa-magnifying-glass text-terracotta"></i> Search Arts
+                </h2>
+                <input type="text" id="searchInput" onkeyup="filterArts()" placeholder="Search (e.g. lantern, frog)..." 
+                    class="w-full pl-3 pr-4 py-2 text-xs bg-white border border-craft/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-terracotta/50">
+            </div>
+        </aside>
+        <section class="lg:col-span-3 space-y-6">
+            <div id="origamiGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+        </section>
+    </div>
+
+    <!-- Script Engine & Data -->
+    <script>
+        const origamiData = [
+            {
+                id: 'paper-lantern',
+                title: 'Traditional Paper Lantern (Lalten)',
+                category: 'decorative',
+                difficulty: 'Easy',
+                time: '8 mins',
+                paper: 'Square 20x20 cm Colored Paper',
+                description: 'A classic accordion-pleated festive paper lantern, ideal for lighting displays or holiday decor.',
+                previewSvg: `<svg viewBox="0 0 100 100" class="w-full h-32"><rect x="30" y="15" width="40" height="70" rx="5" fill="#E88D72" stroke="#2C261E" stroke-width="2"/></svg>`,
+                steps: [
+                    { title: 'Initial Center Crease', text: 'Fold paper in half vertically to create a guide line down the middle.', svg: `<svg viewBox="0 0 100 100" class="w-32 h-32"><rect x="15" y="15" width="70" height="70" fill="#FAEDCD" stroke="#2C261E" stroke-width="2"/></svg>` }
+                ]
+            }
+        ];
+        
+        window.onload = function() {
+            renderHomeFeatured();
+            renderGallery();
+        };
+
+        function switchTab(tab) {
+            document.getElementById('page-home').classList.toggle('hidden', tab !== 'home');
+            document.getElementById('page-gallery').classList.toggle('hidden', tab !== 'gallery');
+        }
+
+        function renderHomeFeatured() {
+            const container = document.getElementById('homeFeaturedGrid');
+            container.innerHTML = origamiData.map(item => `
+                <div class="bg-paper rounded-2xl p-5 border border-craft/30 origami-shadow">
+                    <h3 class="font-bold text-base text-slate">${item.title}</h3>
+                    <p class="text-xs text-gray-500 mt-1">${item.description}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderGallery() {
+            const grid = document.getElementById('origamiGrid');
+            grid.innerHTML = origamiData.map(item => `
+                <div class="bg-paper rounded-2xl p-5 border border-craft/30 origami-shadow">
+                    <h3 class="font-bold text-base text-slate">${item.title}</h3>
+                </div>
+            `).join('');
+        }
+
+        function filterArts() {}
+    </script>
+</body>
+</html>
